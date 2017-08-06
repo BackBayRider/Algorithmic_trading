@@ -10,7 +10,7 @@ import os
 from pykalman import KalmanFilter
 import quandl as qd
 
-qd.ApiConfig.api_key = "iPyQWysSc6cfaVsqegWa"
+qd.ApiConfig.api_key = "A DEFINIR SELON UTILISATEUR"
 
 def kalman_serie(mySerie):
 
