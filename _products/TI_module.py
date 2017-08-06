@@ -1,3 +1,5 @@
+# Prix intrisèque (non constaté nécéssairement sur le marché)
+
 def TI_price(type, S, K, P, Ch):
     if type == "call":
         price = (S - K)/(P * Ch)
