@@ -1,29 +1,29 @@
 import numpy as np
 
-def rolling_min(real, n):
-    rolling_min = np.zeros(0)
-    for x in range(len(real)+1):
-        if x >= n:
-            #print("%s // " %(x) ,min(real[x-n:x]), " // " ,real[x-n:x])
-            rolling_min = np.append(rolling_min, min(real[x-n:x]))
-    return rolling_min
-
-def rolling_max(real, n):
-    rolling_max = np.zeros(0)
-    for x in range(len(real)+1):
-        if x >= n:
-            rolling_max = np.append(rolling_max, max(real[x-n:x]))
-    return rolling_max
-
 def fish_transform(my_last, my_high, my_low, n, weight):
+    
+    def rolling(my_high, my_low, n):
+        
+        rolling_max = np.zeros(0)
+        rolling_min = np.zeros(0)
+        
+        for x in range(len(my_high)+1):
 
-    Median = (my_high + my_low) / 2
-    Median = Median[n-1:]
-    MLow = rolling_min(my_low, n)
-    MHigh = rolling_max(my_high, n)
+            if x >= n:
+                
+                rolling_max = np.append(rolling_max, max(my_high[x-n:x]))
+                rolling_min = np.append(rolling_min, min(my_low[x-n:x])) 
 
+        return rolling_max, rolling_min
+    
     I = np.zeros(0)
     fisher_result = np.zeros(0)
+    
+    Median = (my_high + my_low) / 2
+    Median = Median[n-1:]
+    
+    MHigh = rolling(my_high, my_low, n)[0]
+    MLow = rolling(my_high, my_low, n)[1]
 
     x = 0
     for x in range(len(Median)):
