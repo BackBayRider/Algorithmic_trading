@@ -40,7 +40,10 @@ def fish_transform(my_last, my_high, my_low, n, weight):
             fisher = weight*np.log((1 + calc)/(1 - calc))+(1 - weight)*fisher_result[x - 1]
             fisher_result = np.append(fisher_result , fisher)
         x += 1
-
+        
+    zero_list = np.zeros(n-1)
+    fisher_result = np.append(zero_list, fisher_result)
+    
     return fisher_result
 
 
