@@ -41,8 +41,8 @@ def fish_transform(my_last, my_high, my_low, n, weight):
             fisher_result = np.append(fisher_result , fisher)
         x += 1
         
-    zero_list = np.zeros(n-1)
-    fisher_result = np.append(zero_list, fisher_result)
+    nan_list = np.empty(n-1) * np.nan
+    fisher_result = np.append(nan_list, fisher_result)
     
     return fisher_result
 
